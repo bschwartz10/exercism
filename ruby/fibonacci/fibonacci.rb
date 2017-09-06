@@ -25,8 +25,7 @@ class Fibonacci
 
     count = 1
     a = 0
-    b = 0
-    c = 1
+    b = 1
 
     until count == num
       count += 1
@@ -36,17 +35,4 @@ class Fibonacci
     end
     c
   end
-
-  # def self.compute(num, count=1, a=0, b=1, c =0)
-  #   if count == num
-  #     return c
-  #   else
-  #     c = a + b
-  #     a = b
-  #     b = c
-  #     count += 1
-  #     compute(num, count, a, b, c)
-  #   end
-  # end
-
 end
