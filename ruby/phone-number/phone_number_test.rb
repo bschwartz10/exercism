@@ -4,51 +4,70 @@ require_relative 'phone_number'
 # Common test data version: 1.2.0 39cba0d
 class PhoneNumberTest < Minitest::Test
   def test_cleans_the_number
+
     assert_equal "2234567890", PhoneNumber.clean("(223) 456-7890")
   end
 
   def test_cleans_numbers_with_dots
+
     assert_equal "2234567890", PhoneNumber.clean("223.456.7890")
   end
 
   def test_cleans_numbers_with_multiple_spaces
+
     assert_equal "2234567890", PhoneNumber.clean("223 456   7890   ")
   end
 
   def test_invalid_when_9_digits
 
+
     assert_nil PhoneNumber.clean("123456789")
   end
 
   def test_invalid_when_11_digits_does_not_start_with_a_1
+
+
     assert_nil PhoneNumber.clean("22234567890")
   end
 
   def test_valid_when_11_digits_and_starting_with_1
+
+
     assert_equal "2234567890", PhoneNumber.clean("12234567890")
   end
 
   def test_valid_when_11_digits_and_starting_with_1_even_with_punctuation
+
+
     assert_equal "2234567890", PhoneNumber.clean("+1 (223) 456-7890")
   end
 
   def test_invalid_when_more_than_11_digits
+
     assert_nil PhoneNumber.clean("321234567890")
   end
 
   def test_invalid_with_letters
+
+
     assert_nil PhoneNumber.clean("123-abc-7890")
   end
 
   def test_invalid_with_punctuations
+
+
     assert_nil PhoneNumber.clean("123-@:!-7890")
   end
 
   def test_invalid_if_area_code_does_not_start_with_2_9
+
+
     assert_nil PhoneNumber.clean("(123) 456-7890")
   end
 
   def test_invalid_if_exchange_code_does_not_start_with_2_9
+
+
     assert_nil PhoneNumber.clean("(223) 056-7890")
   end
 
@@ -70,7 +89,6 @@ class PhoneNumberTest < Minitest::Test
   # http://ruby-doc.org/docs/ruby-doc-bundle/UsersGuide/rg/constants.html
 
   def test_bookkeeping
-    skip
     assert_equal 2, BookKeeping::VERSION
   end
 end
