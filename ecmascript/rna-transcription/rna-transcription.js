@@ -1,23 +1,26 @@
 module.exports = class Transcriptor {
   constructor() {
-    this.dnaToMap = {
-      C: 'G',
-      G: 'C',
-      A: 'U',
-      T: 'A'
+    this.dna = {
+      'C': 'G',
+      'G': 'C',
+      'A': 'U',
+      'T': 'A'
     }
   }
 
   toRna(dnaStrand) {
     const nucleotides = dnaStrand.split('')
-    const dna = nucleotides.map((nucleotide) => {
-      if (this.dnaToMap[nucleotide]) {
-        return this.dnaToMap[nucleotide]
-      } else {
-          throw new Error('Invalid input DNA.')
-      }
+    const rna = nucleotides.map(nucleotide => {
+      return this.conversion(nucleotide)
     })
-    return dna.join('')
+    return rna.join('')
   }
 
+  conversion(nucleotide) {
+    if (this.dna[nucleotide]) {
+      return this.dna[nucleotide]
+    } else {
+        throw new Error('Invalid input DNA.')
+    }
+  }
 }
