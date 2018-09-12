@@ -1,5 +1,5 @@
 module.exports = class Pangram {
-  constructor (sentence) {
+  constructor(sentence) {
     this.sentence = sentence.toLowerCase()
     this.alphabet = [
                       'a','b','c','d','e','f','g','h','i',
