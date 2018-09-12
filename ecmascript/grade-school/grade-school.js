@@ -1,21 +1,31 @@
-const getCopy = (obj) => JSON.parse(JSON.stringify(obj))
+class School {
 
-module.exports = class School {
-  constructor() {
+  constructor(){
     this.students = {}
   }
 
   roster() {
-    return getCopy(this.students)
+    return this.students
   }
 
   add(name, grade) {
-    this.students[grade] ? this.students[grade].push(name) : this.students[grade] = [name]
-    this.students[grade].sort()
+    if (this.roster().hasOwnProperty(grade)) {
+      this.roster()[grade].push(name)
+    }
+    else {
+      return this.roster()[grade] = [name]
+    }
+    this.roster()[grade].sort()
   }
 
   grade(grade) {
-    return getCopy(this.students)[grade] || []
+    if (this.roster().hasOwnProperty(grade)) {
+      return this.roster()[grade]
+    }
+    else {
+      return []
+    }
   }
-
 }
+
+export default School
